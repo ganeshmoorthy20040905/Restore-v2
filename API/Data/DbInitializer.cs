@@ -21,6 +21,7 @@ public class DbInitializer
         context.Database.Migrate();
 
         if (context.Products.Any()) return;
+
         var Products = new List<Product>
         {
          new() {
