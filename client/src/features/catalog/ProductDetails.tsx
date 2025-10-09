@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 import { Button, Divider, Grid2, Table, TableBody, TableCell, TableContainer, TableRow, TextField, Typography } from "@mui/material";
-import { useFatchProductDetailsQuery } from "./catalogApi";
+import { useFetchProductDetailsQuery } from "./catalogApi";
 import { useAddBasketItemMutation, useFetchBasketQuery, useRemoveBasketItemMutation } from "../basket/basketApi";
 import { useEffect, useState, type ChangeEvent } from "react";
 
@@ -16,7 +16,7 @@ useEffect(()=>{
        if (item) setQuantity(item.quantity);
 },[item])
 
-const {data:product,isLoading}=useFatchProductDetailsQuery(id ? +id :0)
+const {data:product,isLoading}=useFetchProductDetailsQuery(id ? +id :0)
 
  if (!product || isLoading) return <div>Loading...</div>
 
