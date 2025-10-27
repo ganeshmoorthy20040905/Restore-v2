@@ -1,8 +1,10 @@
 using API.Data;
 using API.Entities;
 using API.Middleware;
+using API.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,9 +16,14 @@ builder.Services.AddDbContext<StoreContext>(opt =>
 });
 builder.Services.AddCors();
 builder.Services.AddTransient<ExceptionMiddleware>();
+builder.Services.AddScoped<PaymentService>();
 builder.Services.AddIdentityApiEndpoints<User>(opt =>
 {
-    opt.User.RequireUniqueEmail = true;
+ opt.User.RequireUniqueEmail = true;
+
+   // opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
+    //opt.Lockout.MaxFailedAccessAttempts = 5;
+    //opt.Lockout.AllowedForNewUsers = true;
 })
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<StoreContext>();
