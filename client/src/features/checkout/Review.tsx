@@ -13,7 +13,7 @@ export default function Review({confirmationToken}: Props) {
     const addressString = () => {
         if (!confirmationToken?.shipping) return '';
         const {name, address} = confirmationToken.shipping;
-        return `${name}, ${address?.line1},${address?.line2},${address?.city}, ${address?.state},
+        return `${name}, ${address?.line1},${address?.city}, ${address?.state},
         ${address?.postal_code},${address?.country}`
     }
 

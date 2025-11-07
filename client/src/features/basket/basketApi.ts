@@ -83,7 +83,8 @@ import Cookies from 'js-cookie';
             onQueryStarted:async(__, {dispatch}) => {
                 dispatch(
                     basketApi.util.updateQueryData('fetchBasket',undefined,(draft) => {
-                    draft.items = [];    
+                    draft.items = [];
+                    draft.basketId ='';    
                     })
                 );
                 Cookies.remove('basketId');
