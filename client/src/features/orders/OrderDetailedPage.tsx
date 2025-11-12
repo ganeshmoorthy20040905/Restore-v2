@@ -103,7 +103,7 @@ if(!order) return <Typography variant="h5">Order not found </Typography>
                                         x{item.quantity}
                                       </TableCell>
                                        <TableCell align="right" sx={{p:4}}>
-                                        {currencyFormat(item.price)}
+                                        {currencyFormat(item.price * item.quantity)}
                                       </TableCell>
                                </TableRow>   
                              ))}
